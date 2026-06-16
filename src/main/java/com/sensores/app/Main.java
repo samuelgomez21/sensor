@@ -1,5 +1,6 @@
 package com.sensores.app;
 
+import com.sensores.input.ConsoleInput;
 import com.sensores.output.ConsoleOutput;
 
 public final class Main {
@@ -7,6 +8,8 @@ public final class Main {
     }
 
     public static void main(String[] args) {
-        new MonitoringApplication(new ConsoleOutput()).run();
+        try (ConsoleInput input = new ConsoleInput()) {
+            new MonitoringApplication(new ConsoleOutput(), input).run();
+        }
     }
 }
