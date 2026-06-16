@@ -9,14 +9,14 @@ import com.sensores.output.Output;
 import java.util.List;
 import java.util.Objects;
 
-public final class DeviceRegistry {
+public final class DeviceCatalog {
     private final Output output;
 
-    public DeviceRegistry(Output output) {
+    public DeviceCatalog(Output output) {
         this.output = Objects.requireNonNull(output);
     }
 
-    public List<RegisteredDevice> createDevices() {
+    public List<RegisteredDevice> getDevices() {
         LightBulb lightBulb = new LightBulb(output);
         Fan fan = new Fan(output);
         SmartFridge smartFridge = new SmartFridge(output);
