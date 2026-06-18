@@ -6,9 +6,6 @@ import com.sensores.output.Output;
 import java.util.Objects;
 
 public final class SmartFridge implements Switchable, Monitorable {
-    private static final String DEVICE_NAME = "SmartFridge";
-    private static final int INTERNAL_TEMPERATURE = 4;
-
     private final Output output;
     private boolean on;
 
@@ -19,18 +16,26 @@ public final class SmartFridge implements Switchable, Monitorable {
     @Override
     public void turnOn() {
         on = true;
-        output.println(DEVICE_NAME + " encendido.");
+        output.println("Nevera inteligente encendida.");
     }
 
     @Override
     public void turnOff() {
         on = false;
-        output.println(DEVICE_NAME + " apagado.");
+        output.println("Nevera inteligente apagada.");
     }
 
     @Override
     public String getStatus() {
-        return DEVICE_NAME + " -> " + (on ? "Activo" : "Apagado")
-                + ", Temperatura interna: " + INTERNAL_TEMPERATURE + "°C";
+        return "Nevera inteligente: " + state() + " | Temperatura: 4 °C";
+    }
+
+    private String state() {
+        return on ? "encendida" : "apagada";
+    }
+
+    @Override
+    public String toString() {
+        return "Nevera inteligente";
     }
 }

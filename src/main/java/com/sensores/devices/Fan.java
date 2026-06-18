@@ -13,11 +13,16 @@ public final class Fan implements Switchable {
 
     @Override
     public void turnOn() {
-        output.println("Fan encendido.");
+        output.println("Ventilador encendido.");
     }
 
     @Override
     public void turnOff() {
-        output.println("Fan apagado.");
+        output.println("Ventilador apagado.");
+    }
+
+    @Override
+    public String toString() {
+        return "Ventilador";
     }
 }

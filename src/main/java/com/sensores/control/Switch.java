@@ -10,8 +10,11 @@ public final class Switch {
         this.device = Objects.requireNonNull(device);
     }
 
-    public void operate() {
+    public void turnOn() {
         device.turnOn();
+    }
+
+    public void turnOff() {
         device.turnOff();
     }
 }

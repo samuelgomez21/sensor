@@ -6,9 +6,6 @@ import com.sensores.output.Output;
 import java.util.Objects;
 
 public final class AirConditioner implements Switchable, Monitorable {
-    private static final String DEVICE_NAME = "AirConditioner";
-    private static final int ROOM_TEMPERATURE = 22;
-
     private final Output output;
     private boolean on;
 
@@ -19,18 +16,26 @@ public final class AirConditioner implements Switchable, Monitorable {
     @Override
     public void turnOn() {
         on = true;
-        output.println(DEVICE_NAME + " encendido.");
+        output.println("Aire acondicionado encendido.");
     }
 
     @Override
     public void turnOff() {
         on = false;
-        output.println(DEVICE_NAME + " apagado.");
+        output.println("Aire acondicionado apagado.");
     }
 
     @Override
     public String getStatus() {
-        return DEVICE_NAME + " -> " + (on ? "Activo" : "Apagado")
-                + ", Temperatura ambiente: " + ROOM_TEMPERATURE + "°C";
+        return "Aire acondicionado: " + state() + " | Temperatura: 22 °C";
+    }
+
+    private String state() {
+        return on ? "encendido" : "apagado";
+    }
+
+    @Override
+    public String toString() {
+        return "Aire acondicionado";
     }
 }

@@ -13,11 +13,16 @@ public final class LightBulb implements Switchable {
 
     @Override
     public void turnOn() {
-        output.println("LightBulb encendida.");
+        output.println("Bombilla encendida.");
     }
 
     @Override
     public void turnOff() {
-        output.println("LightBulb apagada.");
+        output.println("Bombilla apagada.");
+    }
+
+    @Override
+    public String toString() {
+        return "Bombilla";
     }
 }

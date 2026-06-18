@@ -6,9 +6,6 @@ import com.sensores.output.Output;
 import java.util.Objects;
 
 public final class ServerDevice implements Switchable, Monitorable {
-    private static final String DEVICE_NAME = "ServerDevice";
-    private static final int CPU_USAGE = 65;
-
     private final Output output;
     private boolean on;
 
@@ -19,17 +16,26 @@ public final class ServerDevice implements Switchable, Monitorable {
     @Override
     public void turnOn() {
         on = true;
-        output.println(DEVICE_NAME + " encendido.");
+        output.println("Servidor encendido.");
     }
 
     @Override
     public void turnOff() {
         on = false;
-        output.println(DEVICE_NAME + " apagado.");
+        output.println("Servidor apagado.");
     }
 
     @Override
     public String getStatus() {
-        return DEVICE_NAME + " -> " + (on ? "Activo" : "Apagado") + ", Uso de CPU: " + CPU_USAGE + "%";
+        return "Servidor: " + state() + " | Uso de CPU: 65%";
+    }
+
+    private String state() {
+        return on ? "encendido" : "apagado";
+    }
+
+    @Override
+    public String toString() {
+        return "Servidor";
     }
 }
